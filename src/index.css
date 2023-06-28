@@ -219,8 +219,8 @@ input[type="text"] {
 
 /* END GLOBAL STYLES */
 .todoapp {
-  background-image: url('background-img.jpg');
-
+  background-image: url('professional-business-person-working-indoors-computer-generated-by-ai.jpg');
+  background-size:cover;
   background-color: #fff;
   margin: 2rem 0 4rem 0;
   padding: 1rem;
