@@ -68,6 +68,7 @@ function Todo(props) {
                     onClick={() => props.deleteTask(props.id)}>
                     Delete <span className="visually-hidden">{props.name}</span>
                 </button>
+               
             </div>
         </div>
     );

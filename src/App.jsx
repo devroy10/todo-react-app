@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Form from "./components/Form";
+import TaskForm from "./components/TaskForm";
 import FilterButton from "./components/FilterButton";
 import Todo from "./components/Todo";
+import Footer from "./components/Footer";
 import { nanoid } from "nanoid";
 
 const FILTER_MAP = {
@@ -16,7 +17,6 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 function App() {
 
   const [tasks, setTasks] = useState([]);
-
 
   const getTasks = () => {
     const tasksFromLocalStorage = localStorage.getItem('tasks');
@@ -39,17 +39,22 @@ function App() {
         // use object spread to make a new object
         // whose `completed` prop has been inverted
         return { ...task, completed: !task.completed };
+
       }
       console.log(tasks)
       return task;
     });
     setTasks(updatedTasks);
+    // if (tasks.completed == true) {
+
+    // }
   }
 
   function deleteTask(id) {
     const remainingTasks = tasks.filter((task) => id !== task.id);
     setTasks(remainingTasks);
     localStorage.setItem('tasks', JSON.stringify(remainingTasks));
+    sessionStorage.setItem('tasks')
   }
 
   const taskList = tasks.filter(FILTER_MAP[filter]).map((task) => (
@@ -61,6 +66,7 @@ function App() {
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
       editTask={editTask}
+      deleteAllTasks={deleteAllTasks}
     />
   ));
 
@@ -76,19 +82,6 @@ function App() {
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
     setTasks([...tasks, newTask]);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    return (
-      <dialog open>
-        <p>Greetings, one and all!</p>
-        <form method="dialog">
-          <button>OK</button>
-        </form>
-      </dialog>
-    );
-    // alert("new task added successfully")
-    // Create a new CSS class for the alert box
-    // const alertClass = `alert-${name}`;
-    // // Add the CSS class to the alert box
-    // document.getElementById("alert").className = alertClass;
   }
 
   function editTask(id, newName) {
@@ -103,23 +96,27 @@ function App() {
     setTasks(editedTaskList);
   }
   const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
-  const headingText = `${taskList.length} ${tasksNoun} remaining`;
+  const headingText = `${taskList.length} ${tasksNoun}`;
 
 
   return (
-    <div className="todoapp stack-large">
-      <h1>Simple Todo App</h1>
-      <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">
-        {filterList}
+    <div>
+      <div className="todoapp stack-large">
+        <h1>Simple Todo App</h1>
+        <TaskForm addTask={addTask} />
+        <div className="filters btn-group stack-exception">
+          {filterList}
+        </div>
+        <h2 id="list-heading">{headingText}</h2>
+        <ul
+          role="list"
+          className="todo-list stack-large stack-exception"
+          aria-labelledby="list-heading">
+          {taskList}
+        </ul>
       </div>
-      <h2 id="list-heading">{headingText}</h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading">
-        {taskList}
-      </ul>
+      <br></br>
+      <Footer />
     </div>
   );
 }

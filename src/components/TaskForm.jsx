@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form(props) {
+function TaskForm(props) {
     const [name, setName] = useState("");
 
     function handleChange(e) {
@@ -41,4 +41,4 @@ function Form(props) {
     );
 }
 
-export default Form;
+export default TaskForm;
