@@ -66,7 +66,6 @@ function App() {
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
       editTask={editTask}
-      deleteAllTasks={deleteAllTasks}
     />
   ));
 
