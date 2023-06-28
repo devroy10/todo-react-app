@@ -219,7 +219,7 @@ input[type="text"] {
 
 /* END GLOBAL STYLES */
 .todoapp {
-  background-image: url('public/background-img.jpg');
+  background-image: url('src/background-img.jpg');
 
   background-color: #fff;
   margin: 2rem 0 4rem 0;
