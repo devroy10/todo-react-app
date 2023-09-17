@@ -222,9 +222,9 @@ input[type="text"] {
   background-image: url('/professional-business-person-working-indoors-computer-generated-by-ai.webp');
   background-size: cover;
   background-color: #fff;
-  margin: 2rem 0 4rem 0;
+  margin: 0rem 0 0rem 0;
   padding: 1rem;
-  border-radius: .4em;
+  border-radius: 0;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
 }
@@ -232,7 +232,7 @@ input[type="text"] {
 @media screen and (min-width: 550px) {
   .todoapp {
     padding: 4rem;
-    border-radius: .3rem;
+    border-radius: 0rem;
   }
 }
 
